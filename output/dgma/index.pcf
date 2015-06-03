@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?pcf-stylesheet path="/_resources/xsl/web/courses-by-subject.xsl" title="Web" extension="php"?>
+<?pcf-stylesheet path="/_resources/xsl/pdf/courses-by-subject.xsl" title="PDF" extension="pdf" alternate="yes" ?>
+<!DOCTYPE document SYSTEM "http://commons.omniupdate.com/dtd/standard.dtd">
+
+<document xmlns:ouc="http://omniupdate.com/XSL/Variables">
+	<headcode></headcode>
+	<bodycode></bodycode>
+	<footcode></footcode>
+	<config>
+		<parameter name="pagetype">subject</parameter>
+		<ouc:properties>
+			<parameter name="subject" prompt="Subject Code" type="text" alt="The subject ID">DGMA</parameter>
+			
+			<parameter section="PDF" name="displayFullPDF" type="radio" prompt="Full PDF" alt="Choose to or not display this page in the full PDF.">
+				<option value="true" selected="true">Display</option>
+				<option value="false" selected="false">Do Not Display</option>
+			</parameter>
+			<parameter name="displayPrintPDF" type="radio" prompt="Print PDF Link" alt="Choose to or not display the Print PDF button on this page.">
+				<option value="true" selected="true">Display</option>
+				<option value="false" selected="false">Do Not Display</option>
+			</parameter>
+			
+			<parameter name="pageTags" prompt="Page Tags" alt="Enter comma list of tags to map this page on the catalog index">Agriculture, Veterinary Technology</parameter>
+			
+			
+			<parameter name="customNavToggle" group="Admins" type="checkbox" prompt="Show Custom Nav" alt="path below must be valid">
+				<option value="yes" selected="true">Yes</option>
+			</parameter>
+			<parameter name="customNavPath" group="Admins" type="filechooser" path="/" prompt="Location of the custom nav file">/current/_nav.inc</parameter>
+
+		</ouc:properties>
+	</config> 
+
+	<ouc:properties label="metadata">
+		<title>DGMA</title>
+		<meta name="description" content="SUNY - Alfred DGMA" />
+	</ouc:properties>
+
+
+	<content>
+		<ouc:div label="maincontent"  group="Everyone"  button-class="oucEditButton" button-text="Main Content"  break="break"><ouc:editor csspath="/_resources/ou/editor/maincontent.css" cssmenu="/_resources/ou/editor/menu.txt" width="955" wysiwyg-class="maincontent"/><p>This is the maincontent editable region</p></ouc:div>
+	</content>
+
+
+
+</document>
