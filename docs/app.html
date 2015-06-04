@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>app.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>app.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>),
+	mustache = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mustache'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>using the subjects array, create files for each subject page.
+using *Sync methods to avoid callbacks for this simple script</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-comment">/* subjects is the array of subject IDs. **/</span>
+<span class="hljs-keyword">var</span> subjects = [<span class="hljs-string">"ACCT"</span>, <span class="hljs-string">"AGRI"</span>, <span class="hljs-string">"AGEC"</span>, <span class="hljs-string">"AGPS"</span>, <span class="hljs-string">"ASDC"</span>, <span class="hljs-string">"ANSC"</span>, <span class="hljs-string">"ANTH"</span>, <span class="hljs-string">"ARCH"</span>, <span class="hljs-string">"AUTO"</span>, <span class="hljs-string">"BSET"</span>, <span class="hljs-string">"BIOL"</span>, <span class="hljs-string">"BLCT"</span>, <span class="hljs-string">"BUAD"</span>, <span class="hljs-string">"CHEM"</span>, <span class="hljs-string">"CIVL"</span>, <span class="hljs-string">"COMP"</span>, <span class="hljs-string">"CISY"</span>, <span class="hljs-string">"CTRP"</span>, <span class="hljs-string">"CJUS"</span>, <span class="hljs-string">"DGMA"</span>, <span class="hljs-string">"DCAD"</span>, <span class="hljs-string">"ECON"</span>, <span class="hljs-string">"EDUC"</span>, <span class="hljs-string">"ELET"</span>, <span class="hljs-string">"ELTR"</span>, <span class="hljs-string">"EMET"</span>, <span class="hljs-string">"ENGR"</span>, <span class="hljs-string">"ESOL"</span>, <span class="hljs-string">"ENVR"</span>, <span class="hljs-string">"FILM"</span>, <span class="hljs-string">"FNAT"</span>, <span class="hljs-string">"FDSR"</span>, <span class="hljs-string">"FRSC"</span>, <span class="hljs-string">"GEOL"</span>, <span class="hljs-string">"GLST"</span>, <span class="hljs-string">"HPED"</span>, <span class="hljs-string">"MEDR"</span>, <span class="hljs-string">"HLTH"</span>, <span class="hljs-string">"HIST"</span>, <span class="hljs-string">"HUSR"</span>, <span class="hljs-string">"DSGN"</span>, <span class="hljs-string">"ITAL"</span>, <span class="hljs-string">"JAPN"</span>, <span class="hljs-string">"LITR"</span>, <span class="hljs-string">"MATT"</span>, <span class="hljs-string">"MKTG"</span>, <span class="hljs-string">"MATH"</span>, <span class="hljs-string">"MECH"</span>, <span class="hljs-string">"NASC"</span>, <span class="hljs-string">"NURS"</span>, <span class="hljs-string">"PHIL"</span>, <span class="hljs-string">"PHYS"</span>, <span class="hljs-string">"PLSC"</span>, <span class="hljs-string">"PSYC"</span>, <span class="hljs-string">"SOCI"</span>, <span class="hljs-string">"SPAN"</span>, <span class="hljs-string">"SPCH"</span>, <span class="hljs-string">"SPMG"</span>, <span class="hljs-string">"TMGT"</span>, <span class="hljs-string">"VETS"</span>, <span class="hljs-string">"WELD"</span>],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>read our template files into local vars</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	tmpl_props = fs.readFileSync(<span class="hljs-string">"templates/_props.mst"</span>,<span class="hljs-string">"utf8"</span>),
+	tmpl_index = fs.readFileSync(<span class="hljs-string">"templates/index.mst"</span>,<span class="hljs-string">"utf8"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>this would be more modular if we created the data object first and then iterated that, instead of working with a single array as a starting point</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>subjects.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>set the destination path root</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">var</span> path = <span class="hljs-string">"output/"</span>+item.toLowerCase(),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>create the data object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		data = {course : item},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>render the templates</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		renderedProps = mustache.render(tmpl_props,data),
+		renderedIndex = mustache.render(tmpl_index, data);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>make the dir</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	fs.mkdir(path, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>create file path for each file we’re creating</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">var</span> indexpath = path+<span class="hljs-string">"/index.pcf"</span>,
+		propspath = path+<span class="hljs-string">"/_props.pcf"</span>,
+		navpath = path+<span class="hljs-string">"/_nav.inc"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>write rendered html templates to the appropriate file</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		fs.writeFileSync(indexpath,renderedIndex);
+		fs.writeFileSync(propspath,renderedProps);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>in this case, we have no template for the _nav.inc. they will be blank on creation</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		fs.writeFileSync(navpath);
+
+		<span class="hljs-built_in">console</span>.log(path + <span class="hljs-string">" files written"</span>);
+	})
+	
+})</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>debug callback</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">data</span>)</span>{
+	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"default debug output:: "</span>, data)
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
