@@ -4,7 +4,7 @@
 
 <document xmlns:ouc="http://omniupdate.com/XSL/Variables">
 	<ouc:properties label="config">
-		<parameter name="breadcrumb" type="text" group="Everyone" prompt="Section Title" alt="Enter the  friendly name for the section's breadcrumb.">{{course}}</parameter>
+		<parameter name="breadcrumb" type="text" group="Everyone" prompt="Section Title" alt="Enter the  friendly name for the section's breadcrumb.">{{courseID}}</parameter>
 	</ouc:properties>	
 </document>
 

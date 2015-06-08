@@ -10,7 +10,7 @@
 	<config>
 		<parameter name="pagetype">subject</parameter>
 		<ouc:properties>
-			<parameter name="subject" prompt="Subject Code" type="text" alt="The subject ID">{{course}}</parameter>
+			<parameter name="subject" prompt="Subject Code" type="text" alt="The subject ID">{{courseID}}</parameter>
 			
 			<parameter section="PDF" name="displayFullPDF" type="radio" prompt="Full PDF" alt="Choose to or not display this page in the full PDF.">
 				<option value="true" selected="true">Display</option>

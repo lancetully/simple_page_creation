@@ -6,3 +6,5 @@
 1. run `npm install`
 1. clean the output folder `rm -R output/*`
 1. run the app `npm start`
+1. profit
+
