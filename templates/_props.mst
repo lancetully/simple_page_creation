@@ -1,10 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?pcf-stylesheet path="/_resources/xsl/web/properties.xsl" title="Properties" extension="html"?>
-<!DOCTYPE document SYSTEM "http://commons.omniupdate.com/dtd/standard.dtd"> 
 
-<document xmlns:ouc="http://omniupdate.com/XSL/Variables">
-	<ouc:properties label="config">
-		<parameter name="breadcrumb" type="text" group="Everyone" prompt="Section Title" alt="Enter the  friendly name for the section's breadcrumb.">{{courseID}}</parameter>
-	</ouc:properties>	
-</document>
+<!doctype html>
 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>{{courseID}}</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+</head>
+
+<body>
+  Course id = {{courseID}}
+</body>
+</html>
